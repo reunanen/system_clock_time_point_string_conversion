@@ -12,8 +12,8 @@
 
 namespace system_clock_time_point_string_conversion {
 
-    std::string to_string(const std::chrono::system_clock::time_point& time_point);
-    //std::chrono::system_clock::time_point from_string(const std::string& time_string);
+    std::string to_string(const std::chrono::system_clock::time_point& time_point, char dateTimeSeparator = 'T');
+    std::chrono::system_clock::time_point from_string(const std::string& time_string);
 
 }
 
