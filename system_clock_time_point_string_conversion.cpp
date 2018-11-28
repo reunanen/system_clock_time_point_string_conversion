@@ -68,7 +68,13 @@ namespace system_clock_time_point_string_conversion {
         tm.tm_sec = std::stoi(time_string.substr(17, 2));
         tm.tm_isdst = 0;
 
-        const std::time_t t = _mkgmtime(&tm);
+        const std::time_t t =
+#ifdef _WIN32
+            _mkgmtime(&tm)
+#else
+            timegm(&tm)
+#endif
+        ;
 
         std::chrono::system_clock::time_point time_point = std::chrono::system_clock::from_time_t(t);
 
